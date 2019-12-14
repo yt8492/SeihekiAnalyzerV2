@@ -1,4 +1,12 @@
 ext {
     kotlinJvm = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     jsoup = 'org.jsoup:jsoup:1.12.1'
+
+    def grpc_version = '1.25.0'
+    grpcProtobuf = "io.grpc:grpc-protobuf:$grpc_version"
+    grpcStub = "io.grpc:grpc-stub:$grpc_version"
+    grpcNetty = "io.grpc:grpc-netty:$grpc_version"
+
+    def protobuf_version = '3.10.0'
+    protobufJava = "com.google.protobuf:protobuf-java:$protobuf_version"
 }

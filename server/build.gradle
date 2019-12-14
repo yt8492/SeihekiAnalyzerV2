@@ -4,4 +4,7 @@ apply plugin: 'application'
 dependencies {
     implementation kotlinJvm
     implementation jsoup
+    implementation grpcProtobuf
+    implementation grpcStub
+    implementation grpcNetty
 }

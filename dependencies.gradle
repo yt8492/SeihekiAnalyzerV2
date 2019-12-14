@@ -1,0 +1,4 @@
+ext {
+    kotlinJvm = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    jsoup = 'org.jsoup:jsoup:1.12.1'
+}

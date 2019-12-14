@@ -1,0 +1,10 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation kotlinJvm
+    implementation jsoup
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"

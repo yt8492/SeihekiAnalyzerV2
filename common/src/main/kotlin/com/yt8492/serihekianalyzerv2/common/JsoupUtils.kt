@@ -1,11 +1,12 @@
-package com.yt8492.seihekianalyzerv2
+package com.yt8492.serihekianalyzerv2.common
 
 import org.jsoup.Connection
 import org.jsoup.Jsoup
 
 object JsoupUtils {
     fun requestByGet(url: String, cookies: Map<String, String>? = null, data: Map<String, String>? = null): Connection.Response {
-        var connection = getConnection(url)
+        var connection =
+            getConnection(url)
         if (cookies != null) {
             connection = connection.cookies(cookies)
         }
@@ -16,7 +17,8 @@ object JsoupUtils {
     }
 
     fun requestByPost(url: String, cookies: Map<String, String>? = null, data: Map<String, String>? = null): Connection.Response {
-        var connection = getConnection(url)
+        var connection =
+            getConnection(url)
         if (cookies != null) {
             connection = connection.cookies(cookies)
         }

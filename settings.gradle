@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':common', ':server'
 rootProject.name='SeihekiAnalyzerV2'

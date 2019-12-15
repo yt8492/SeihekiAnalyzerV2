@@ -1,0 +1,56 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.yt8492.seihekianalyzerv2.proto";
+option java_outer_classname = "SeihekiAnalyzerProto";
+
+package api;
+
+message Empty {}
+
+message Tag {
+    string value = 1;
+}
+
+message Url {
+    string value = 1;
+}
+
+message Urls {
+    repeated Url urls = 1;
+}
+
+message Work {
+    Url url = 1;
+    repeated Tag tags = 2;
+}
+
+message TagCount {
+    Tag tag = 1;
+    int32 count = 2;
+}
+
+message AnalyzeResult {
+    int32 total_count = 1;
+    repeated TagCount tag_counts = 2;
+}
+
+message User {
+    string id = 1;
+}
+
+message NotificationToken {
+    string value = 1;
+}
+
+message UserNotificationToken {
+    User user = 1;
+    NotificationToken token = 2;
+}
+
+service SeihekiAnalyzer {
+    rpc Analyze(Urls) returns (AnalyzeResult);
+}
+
+service RecommendService {
+    rpc RegisterToken(UserNotificationToken) returns (Empty);
+}

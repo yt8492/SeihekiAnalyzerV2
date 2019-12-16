@@ -10,6 +10,8 @@ repositories {
 }
 
 dependencies {
+    implementation project(':proto')
+
     implementation kotlinJvm
     implementation jsoup
     implementation grpcProtobuf

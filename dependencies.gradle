@@ -13,4 +13,7 @@ ext {
     krotoplus_version = '0.5.0'
     krotoplusCoroutines = "com.github.marcoferrer.krotoplus:kroto-plus-coroutines:$krotoplus_version"
     krotoplusMessage = "com.github.marcoferrer.krotoplus:kroto-plus-message:$krotoplus_version"
+
+    sqldelight_version = '1.2.1'
+    sqlDelight = "com.squareup.sqldelight:sqlite-driver:$sqldelight_version"
 }

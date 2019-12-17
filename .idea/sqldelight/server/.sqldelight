@@ -1,0 +1,1 @@
+{"databases":[{"packageName":"com.yt8492.seihekianalyzerv2.server.db","compilationUnits":[{"name":"main","sourceFolders":[{"path":"src/main/db","dependency":false}]}],"outputDirectory":"build/generated/sqldelight/code/MyDatabase","className":"MyDatabase","dependencies":[]}]}

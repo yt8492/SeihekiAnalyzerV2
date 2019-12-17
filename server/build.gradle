@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'kotlin'
+    id 'com.squareup.sqldelight'
 }
 
 sourceCompatibility = 1.8
@@ -17,6 +18,7 @@ dependencies {
     implementation grpcProtobuf
     implementation grpcStub
     implementation grpcNetty
+    implementation sqlDelight
 }
 
 compileKotlin {
@@ -24,4 +26,12 @@ compileKotlin {
 }
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
+}
+
+sqldelight {
+    MyDatabase {
+        packageName = "com.yt8492.seihekianalyzerv2.server.db"
+        sourceFolders = ["db"]
+        schemaOutputDirectory = file("src/main/sqldelight/databases")
+    }
 }

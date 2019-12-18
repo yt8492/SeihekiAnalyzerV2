@@ -1,0 +1,12 @@
+CREATE VIEW url_with_tag AS
+SELECT
+  url.value AS url,
+  tag.name AS tag
+FROM url
+JOIN url_tag ON url.id = url_tag.url_id
+JOIN tag ON url_tag.tag_id = tag.id;
+
+selectAllByUrl:
+SELECT *
+FROM url_with_tag
+WHERE url = ?;

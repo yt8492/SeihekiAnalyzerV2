@@ -1,0 +1,10 @@
+CREATE TABLE tag (
+  id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL UNIQUE
+);
+
+insert:
+INSERT OR IGNORE INTO tag (name) VALUES (?);
+
+selectAll:
+SELECT * FROM tag;

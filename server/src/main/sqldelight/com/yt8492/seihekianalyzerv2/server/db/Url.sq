@@ -1,0 +1,10 @@
+CREATE TABLE url (
+  id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  value TEXT NOT NULL UNIQUE
+);
+
+insert:
+INSERT OR IGNORE INTO url (value) VALUES (?);
+
+selectAll:
+SELECT * FROM url;

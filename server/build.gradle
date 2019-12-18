@@ -29,9 +29,9 @@ compileTestKotlin {
 }
 
 sqldelight {
-    MyDatabase {
-        packageName = "com.yt8492.seihekianalyzerv2.server.db"
-        sourceFolders = ["db"]
+    Database {
+        packageName = "com.yt8492.seihekianalyzerv2.server"
+        sourceFolders = ["sqldelight"]
         schemaOutputDirectory = file("src/main/sqldelight/databases")
     }
 }

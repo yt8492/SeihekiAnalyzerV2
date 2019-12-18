@@ -1,0 +1,8 @@
+CREATE TABLE account_notification_token (
+  id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  account_id INTEGER NOT NULL,
+  notification_token_id INTEGER NOT NULL,
+  FOREIGN KEY (account_id) REFERENCES account(id),
+  FOREIGN KEY (notification_token_id) REFERENCES notification_token(id)
+);
+

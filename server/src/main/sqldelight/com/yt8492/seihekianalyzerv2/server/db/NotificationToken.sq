@@ -1,0 +1,7 @@
+CREATE TABLE notification_token (
+  id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  token TEXT NOT NULL UNIQUE
+);
+
+insert:
+INSERT OR IGNORE INTO notification_token (token) VALUES (?);

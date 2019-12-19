@@ -2,8 +2,8 @@ CREATE VIEW user_with_notification_tokeen AS
 SELECT
   account.id AS user_id,
   account.name AS user_name,
-  notification_token AS user_notification_token
+  notification_token.token AS user_notification_token
 FROM account
 JOIN account_notification_token ON account.id = account_notification_token.account_id
-JOIN notification_token ON notification_token.id = account_notification_token.notification_token;
+JOIN notification_token ON notification_token.id = account_notification_token.notification_token_id;
 

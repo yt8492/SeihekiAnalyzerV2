@@ -15,6 +15,7 @@ dependencies {
     implementation project(':common')
 
     implementation kotlinJvm
+    implementation coroutinesCore
     implementation jsoup
     implementation grpcProtobuf
     implementation grpcStub

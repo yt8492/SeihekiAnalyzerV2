@@ -9,7 +9,7 @@ import java.net.URL
 import java.util.*
 
 object DLsiteScraperWithJsoup {
-    suspend fun scrapeByUrl(url: URL): Work {
+    suspend fun scrapeWorkByUrl(url: URL): Work {
         val workPage = withContext(Dispatchers.IO) {
             JsoupUtils.requestByGet(url).parse()
         }
@@ -22,10 +22,11 @@ object DLsiteScraperWithJsoup {
             ?.map { Tag(it) }
             ?.toSet()
             ?: setOf()
+
         return Work(url, tags)
     }
 
-    suspend fun scrapeTodayWorks(): Set<Work> {
+    suspend fun scrapeAllTodayWorks(): Set<Work> {
         val today = Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo"))
         val todayYMD = today.let { "${it.get(Calendar.YEAR)}-${it.get(Calendar.MONTH) + 1}-${it.get(Calendar.DATE)}" }
         val page = withContext(Dispatchers.IO) {

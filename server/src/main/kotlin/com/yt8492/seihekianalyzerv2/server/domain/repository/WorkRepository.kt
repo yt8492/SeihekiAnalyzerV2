@@ -5,5 +5,6 @@ import com.yt8492.serihekianalyzerv2.common.domain.model.Work
 
 interface WorkRepository {
     suspend fun findByUrl(url: Url): Work?
+    suspend fun findAllByUrls(urls: List<Url>): List<Work>
     suspend fun save(work: Work)
 }

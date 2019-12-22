@@ -36,7 +36,10 @@ class LoginFragment : Fragment() {
             val webClient = DLsiteWebViewClient(cookieManager) { loginCookies ->
                 visibility = View.GONE
                 lifecycleScope.launch {
-                    binding.urls = DLsiteScraperWithJsoup.scrapeAllUserBoughtUrls(loginCookies).joinToString("\n")
+                    binding.urls = DLsiteScraperWithJsoup.scrapeAllUserBoughtUrls(loginCookies)
+                        .joinToString("\n") {
+                            it.value
+                        }
                 }
             }
             webViewClient = webClient

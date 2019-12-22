@@ -11,18 +11,23 @@ class DLsiteWebViewClient(
 ) : WebViewClient() {
 
     override fun onPageFinished(view: WebView?, url: String?) {
-        if (url == URL_WELCOME) {
-            val cookies = cookieManager.getCookie(url).split(""";\s*""".toRegex()).associate {
+        if (url.isNullOrBlank()) {
+            return
+        }
+        if (url == URL_WELCOME || url.startsWith("https://ssl.dlsite.com/maniax/login/finish/")) {
+            val cookies = cookieManager.getCookie(URL_WELCOME).split(""";\s*""".toRegex()).associate {
                 val keyValue = it.split("=")
                 keyValue[0] to keyValue[1]
+            }.filter {
+                requireKeys.contains(it.key)
             }
-            val phpSessId = cookies["PHPSESSID"]
-            Log.d("hogehoge", "PHPSESSID=$phpSessId")
+            Log.d("hogehoge", cookies.map { "${it.key}=${it.value}" }.joinToString())
             onLoginSucceed(cookies)
         }
     }
 
     companion object {
         private const val URL_WELCOME = "https://login.dlsite.com/guide/welcome"
+        private val requireKeys = listOf("XSRF-TOKEN", "PHPSESSID", "jsessionid")
     }
 }

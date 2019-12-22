@@ -4,5 +4,5 @@ import java.net.URL
 
 data class Work(
     val url: URL,
-    val tags: Set<Tag>
+    val tags: List<Tag>
 )

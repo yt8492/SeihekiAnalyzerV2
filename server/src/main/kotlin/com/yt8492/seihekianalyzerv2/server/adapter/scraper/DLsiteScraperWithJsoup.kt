@@ -13,7 +13,7 @@ object DLsiteScraperWithJsoup {
     private val URL_LOGIN = URL("https://login.dlsite.com/login")
     private val URL_USER_BUY_HISTORY = URL("https://ssl.dlsite.com/maniax/mypage/userbuy")
 
-    suspend fun scrapeAllUserBoughtUrls(loginCookies: Map<String, String>): Set<URL> {
+    suspend fun scrapeAllUserBoughtUrls(loginCookies: Map<String, String>): List<URL> {
         val historyCookies = withContext(Dispatchers.IO) {
             JsoupUtils.requestByPost(URL_USER_BUY_HISTORY, cookies = loginCookies).cookies()
         }
@@ -43,7 +43,7 @@ object DLsiteScraperWithJsoup {
             }
         return userBuyHistoryUrls.map {
             URL(it)
-        }.toSet()
+        }
     }
 
     suspend fun scrapeWorkByUrl(url: URL): Work {
@@ -57,13 +57,12 @@ object DLsiteScraperWithJsoup {
             ?.select("[href]")
             ?.text()?.split(" ".toRegex())
             ?.map { Tag(it) }
-            ?.toSet()
-            ?: setOf()
+            ?: listOf()
 
         return Work(url, tags)
     }
 
-    suspend fun scrapeAllTodayWorks(): Set<Work> {
+    suspend fun scrapeAllTodayWorks(): List<Work> {
         val today = Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo"))
         val todayYMD = today.let { "${it.get(Calendar.YEAR)}-${it.get(Calendar.MONTH) + 1}-${it.get(Calendar.DATE)}" }
         val page = withContext(Dispatchers.IO) {
@@ -83,9 +82,8 @@ object DLsiteScraperWithJsoup {
                     .first()
                     .getElementsByTag("a")
                     .map { Tag(it.text()) }
-                    .toSet()
                 Work(url, tags)
-            }.toSet()
+            }
         return works
     }
 }

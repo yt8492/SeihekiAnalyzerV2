@@ -7,8 +7,9 @@ import android.view.ViewGroup
 import android.webkit.CookieManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import com.yt8492.serihekianalyzerv2.common.JsoupUtils
+import com.yt8492.serihekianalyzerv2.common.scraper.JsoupUtils
 import com.yt8492.seihekianalyzerv2.databinding.FragmentLoginBinding
+import com.yt8492.serihekianalyzerv2.common.scraper.DLsiteScraperWithJsoup
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -35,31 +36,7 @@ class LoginFragment : Fragment() {
             val webClient = DLsiteWebViewClient(cookieManager) { loginCookies ->
                 visibility = View.GONE
                 lifecycleScope.launch {
-                    val userBuyHistoryUrls = withContext(Dispatchers.IO) {
-                        val historyCookies = JsoupUtils.requestByPost(URL_USER_BUY_HISTORY, cookies = loginCookies).cookies()
-
-                        val thisMonthUserBuyHistoryResult = JsoupUtils.requestByGet(URL_USER_BUY_HISTORY, cookies = historyCookies).parse()
-                        val pastMonthUserBuyHistoryResult = JsoupUtils.requestByGet(URL_USER_BUY_HISTORY, cookies = historyCookies, data = mapOf(
-                            "_layout" to "mypage_userbuy_complete",
-                            "_form_id" to "mypageUserbuyCompleteForm",
-                            "_site" to "maniax",
-                            "_view" to "input",
-                            "start" to "all"
-                        )).parse()
-                        val userBuyHistoryUrls = listOf(thisMonthUserBuyHistoryResult, pastMonthUserBuyHistoryResult)
-                            .flatMap { d ->
-                                d.getElementsByClass("work_name")
-                                    .map { e ->
-                                        try {
-                                            e.select("[href]").toString().split("\"")[1]
-                                        } catch (error: IndexOutOfBoundsException) {
-                                            ""
-                                        }
-                                    }
-                            }
-                        userBuyHistoryUrls
-                    }
-                    binding.urls = userBuyHistoryUrls.joinToString("\n")
+                    binding.urls = DLsiteScraperWithJsoup.scrapeAllUserBoughtUrls(loginCookies).joinToString("\n")
                 }
             }
             webViewClient = webClient

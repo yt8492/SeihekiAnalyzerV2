@@ -1,4 +1,4 @@
-package com.yt8492.serihekianalyzerv2.common
+package com.yt8492.serihekianalyzerv2.common.scraper
 
 import org.jsoup.Connection
 import org.jsoup.Jsoup

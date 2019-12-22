@@ -12,6 +12,7 @@ repositories {
 
 dependencies {
     implementation kotlinJvm
+    implementation annotation
     implementation protobufJava
     implementation grpcProtobuf
     implementation grpcStub

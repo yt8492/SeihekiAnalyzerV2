@@ -1,6 +1,5 @@
-package com.yt8492.seihekianalyzerv2.server.adapter.scraper
+package com.yt8492.serihekianalyzerv2.common.scraper
 
-import com.yt8492.serihekianalyzerv2.common.JsoupUtils
 import com.yt8492.serihekianalyzerv2.common.domain.model.Tag
 import com.yt8492.serihekianalyzerv2.common.domain.model.Work
 import kotlinx.coroutines.Dispatchers

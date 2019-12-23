@@ -9,7 +9,6 @@ import java.util.*
 
 object DLsiteScraperWithJsoup {
 
-    private val Url_LOGIN = Url("https://login.dlsite.com/login")
     private val Url_USER_BUY_HISTORY = Url("https://ssl.dlsite.com/maniax/mypage/userbuy")
 
     suspend fun scrapeAllUserBoughtUrls(loginCookies: Map<String, String>): List<Url> {

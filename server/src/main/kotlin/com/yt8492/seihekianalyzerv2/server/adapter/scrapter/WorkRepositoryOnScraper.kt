@@ -1,9 +1,9 @@
 package com.yt8492.seihekianalyzerv2.server.adapter.scrapter
 
 import com.yt8492.seihekianalyzerv2.server.domain.repository.WorkRepository
-import com.yt8492.serihekianalyzerv2.common.domain.model.Url
-import com.yt8492.serihekianalyzerv2.common.domain.model.Work
-import com.yt8492.serihekianalyzerv2.common.scraper.DLsiteScraperWithJsoup
+import com.yt8492.seihekianalyzerv2.common.domain.model.Url
+import com.yt8492.seihekianalyzerv2.common.domain.model.Work
+import com.yt8492.seihekianalyzerv2.common.scraper.DLsiteScraperWithJsoup
 import kotlinx.coroutines.delay
 
 class WorkRepositoryOnScraper(

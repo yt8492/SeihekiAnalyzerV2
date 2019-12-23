@@ -7,12 +7,9 @@ import android.view.ViewGroup
 import android.webkit.CookieManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import com.yt8492.serihekianalyzerv2.common.scraper.JsoupUtils
 import com.yt8492.seihekianalyzerv2.databinding.FragmentLoginBinding
-import com.yt8492.serihekianalyzerv2.common.scraper.DLsiteScraperWithJsoup
-import kotlinx.coroutines.Dispatchers
+import com.yt8492.seihekianalyzerv2.common.scraper.DLsiteScraperWithJsoup
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class LoginFragment : Fragment() {
 

@@ -1,7 +1,7 @@
 package com.yt8492.seihekianalyzerv2.server.domain.repository
 
-import com.yt8492.serihekianalyzerv2.common.domain.model.Url
-import com.yt8492.serihekianalyzerv2.common.domain.model.Work
+import com.yt8492.seihekianalyzerv2.common.domain.model.Url
+import com.yt8492.seihekianalyzerv2.common.domain.model.Work
 
 interface WorkRepository {
     suspend fun findByUrl(url: Url): Work?

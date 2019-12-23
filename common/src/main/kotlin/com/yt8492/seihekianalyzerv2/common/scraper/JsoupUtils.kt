@@ -1,6 +1,6 @@
-package com.yt8492.serihekianalyzerv2.common.scraper
+package com.yt8492.seihekianalyzerv2.common.scraper
 
-import com.yt8492.serihekianalyzerv2.common.domain.model.Url
+import com.yt8492.seihekianalyzerv2.common.domain.model.Url
 import org.jsoup.Connection
 import org.jsoup.Jsoup
 

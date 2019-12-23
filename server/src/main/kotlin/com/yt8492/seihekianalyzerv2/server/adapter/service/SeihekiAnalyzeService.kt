@@ -6,7 +6,7 @@ import com.yt8492.seihekianalyzerv2.proto.Tag as TagProto
 import com.yt8492.seihekianalyzerv2.proto.TagCount as TagCountProto
 import com.yt8492.seihekianalyzerv2.server.usecase.analyze.SeihekiAnalyzeResult
 import com.yt8492.seihekianalyzerv2.server.usecase.analyze.SeihekiAnalyzeUseCase
-import com.yt8492.serihekianalyzerv2.common.domain.model.Url
+import com.yt8492.seihekianalyzerv2.common.domain.model.Url
 import com.yt8492.seihekianalyzerv2.proto.Urls as UrlsProto
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

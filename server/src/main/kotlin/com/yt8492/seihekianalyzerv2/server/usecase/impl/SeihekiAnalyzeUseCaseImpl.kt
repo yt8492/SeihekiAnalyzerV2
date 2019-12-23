@@ -22,6 +22,9 @@ class SeihekiAnalyzeUseCaseImpl(
                 }
             }
             val worksFromScraper = workRepositoryOnScraper.findAllByUrls(scrapeRequireUrls)
+            worksFromScraper.forEach {
+                workRepositoryOnDB.save(it)
+            }
             val works = worksFromDB + worksFromScraper
             val tagCounts = works.fold(mutableMapOf<Tag, Int>()) { tagCounts, work ->
                 work.tags.forEach { tag ->

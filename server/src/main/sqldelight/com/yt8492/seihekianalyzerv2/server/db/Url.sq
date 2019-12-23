@@ -8,3 +8,6 @@ INSERT OR IGNORE INTO url (value) VALUES (?);
 
 selectAll:
 SELECT * FROM url;
+
+selectByUrl:
+SELECT * FROM url WHERE value = ?;

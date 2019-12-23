@@ -8,3 +8,6 @@ INSERT OR IGNORE INTO tag (name) VALUES (?);
 
 selectAll:
 SELECT * FROM tag;
+
+selectByTag:
+SELECT * FROM tag WHERE name = ?;

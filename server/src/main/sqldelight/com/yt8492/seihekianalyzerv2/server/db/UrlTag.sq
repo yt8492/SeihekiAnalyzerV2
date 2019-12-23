@@ -2,5 +2,9 @@ CREATE TABLE url_tag (
   url_id INTEGER NOT NULL,
   tag_id INTEGER NOT NULL,
   FOREIGN KEY (url_id) REFERENCES url(id),
-  FOREIGN KEY (tag_id) REFERENCES tag(id)
+  FOREIGN KEY (tag_id) REFERENCES tag(id),
+  UNIQUE(url_id, tag_id)
 );
+
+insert:
+INSERT OR IGNORE INTO url_tag VALUES (?, ?);

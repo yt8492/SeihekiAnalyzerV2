@@ -47,7 +47,6 @@ class LoginFragment : Fragment() {
 
     companion object {
         private const val URL_LOGIN = "https://login.dlsite.com/login"
-        private const val URL_USER_BUY_HISTORY = "https://ssl.dlsite.com/maniax/mypage/userbuy"
 
         fun newInstance(): LoginFragment = LoginFragment()
     }

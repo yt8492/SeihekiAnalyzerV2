@@ -4,8 +4,8 @@ import com.yt8492.seihekianalyzerv2.proto.AnalyzeResult as AnalyzeResultProto
 import com.yt8492.seihekianalyzerv2.proto.SeihekiAnalyzerCoroutineGrpc
 import com.yt8492.seihekianalyzerv2.proto.Tag as TagProto
 import com.yt8492.seihekianalyzerv2.proto.TagCount as TagCountProto
-import com.yt8492.seihekianalyzerv2.server.usecase.analyze.SeihekiAnalyzeResult
-import com.yt8492.seihekianalyzerv2.server.usecase.analyze.SeihekiAnalyzeUseCase
+import com.yt8492.seihekianalyzerv2.common.usecase.analyze.SeihekiAnalyzeResult
+import com.yt8492.seihekianalyzerv2.common.usecase.analyze.SeihekiAnalyzeUseCase
 import com.yt8492.seihekianalyzerv2.common.domain.model.Url
 import com.yt8492.seihekianalyzerv2.proto.Urls as UrlsProto
 import kotlinx.coroutines.Dispatchers

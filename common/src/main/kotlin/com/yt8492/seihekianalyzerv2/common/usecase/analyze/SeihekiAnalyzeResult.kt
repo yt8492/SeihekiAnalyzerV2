@@ -1,4 +1,4 @@
-package com.yt8492.seihekianalyzerv2.server.usecase.analyze
+package com.yt8492.seihekianalyzerv2.common.usecase.analyze
 
 import com.yt8492.seihekianalyzerv2.common.domain.model.AnalyzeResult
 

@@ -19,9 +19,12 @@ class SeihekiAnalyzeService(
         get() = Dispatchers.Default + Job()
 
     override suspend fun analyze(request: UrlsProto): AnalyzeResultProto {
+        println("analyze called")
+        println("request size: ${request.urlsCount}")
         val urls = request.urlsList.map { Url(it.value) }
         return when (val result = seihekiAnalyzeUseCase.execute(urls)) {
             is SeihekiAnalyzeResult.Success -> {
+                println("analyze success")
                 AnalyzeResultProto {
                     totalCount = result.result.totalCount
                     val tagCounts = result.result.tagCounts.map {
@@ -35,7 +38,10 @@ class SeihekiAnalyzeService(
                     addAllTagCounts(tagCounts)
                 }
             }
-            is SeihekiAnalyzeResult.Failure -> throw result.cause
+            is SeihekiAnalyzeResult.Failure -> {
+                result.cause.printStackTrace()
+                throw result.cause
+            }
         }
     }
 }

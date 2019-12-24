@@ -12,6 +12,7 @@ fun main() {
     println("start server")
 
     val driver = JdbcSqliteDriver(JdbcSqliteDriver.IN_MEMORY)
+    Database.Schema.create(driver)
     val database = Database(driver)
     val urlDB = database.urlQueries
     val tagDB = database.tagQueries

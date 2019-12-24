@@ -2,9 +2,11 @@ plugins {
     id 'java'
     id 'kotlin'
     id 'com.squareup.sqldelight'
+    id 'application'
 }
 
 sourceCompatibility = 1.8
+mainClassName = 'com.yt8492.seihekianalyzerv2.server.ServerMainKt'
 
 repositories {
     mavenCentral()
@@ -20,6 +22,7 @@ dependencies {
     implementation grpcProtobuf
     implementation grpcStub
     implementation grpcNetty
+    implementation krotoplusCoroutines
     implementation sqlDelight
 }
 

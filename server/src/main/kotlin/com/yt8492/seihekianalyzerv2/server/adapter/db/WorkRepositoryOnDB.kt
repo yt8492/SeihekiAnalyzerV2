@@ -43,11 +43,9 @@ class WorkRepositoryOnDB(
     override suspend fun save(work: Work) {
         transaction(urlDB, tagDB, urlTagDB, urlWithTagDB) {
             urlDB.insert(work.url.value)
-            work.tags.forEach {
-                tagDB.insert(it.value)
-            }
             val urlId = urlDB.selectByUrl(work.url.value).executeAsOne().id
             work.tags.forEach {
+                tagDB.insert(it.value)
                 val tagId = tagDB.selectByTag(it.value).executeAsOne().id
                 urlTagDB.insert(urlId, tagId)
             }

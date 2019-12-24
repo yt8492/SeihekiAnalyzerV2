@@ -1,4 +1,4 @@
-package com.yt8492.seihekianalyzerv2
+package com.yt8492.seihekianalyzerv2.ui.analyze
 
 import android.util.Log
 import android.webkit.CookieManager

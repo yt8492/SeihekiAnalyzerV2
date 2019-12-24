@@ -15,6 +15,7 @@ dependencies {
     implementation protobufJava
     implementation grpcProtobuf
     implementation grpcStub
+    implementation grpcOkHttp
     implementation krotoplusCoroutines
     implementation krotoplusMessage
 }

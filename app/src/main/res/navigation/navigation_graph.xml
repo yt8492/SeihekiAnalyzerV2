@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.yt8492.seihekianalyzerv2.ui.MainFragment"
+        android:label="@layout/fragment_main"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_main_to_login"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.yt8492.seihekianalyzerv2.ui.analyze.LoginFragment"
+        android:label="@layout/fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_login_to_analyze_result"
+            app:destination="@id/analyzeResultFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/analyzeResultFragment"
+        android:name="com.yt8492.seihekianalyzerv2.ui.analyze.AnalyzeResultFragment"
+        android:label="@layout/fragment_analyze_result"
+        tools:layout="@layout/fragment_analyze_result">
+
+        <action
+            android:id="@+id/action_analyze_result_to_main"
+            app:destination="@id/mainFragment" />
+    </fragment>
+</navigation>

@@ -26,13 +26,6 @@ class SeihekiAnalyzeUseCaseImpl(
                 workRepositoryOnDB.save(it)
             }
             val works = worksFromDB + worksFromScraper
-            println(
-                works.joinToString("\n") {
-                    it.tags.joinToString {
-                        it.value
-                    }
-                }
-            )
             val tagCounts = works.fold(mutableMapOf<Tag, Int>()) { tagCounts, work ->
                 work.tags.forEach { tag ->
                     val count = tagCounts.getOrDefault(tag, 0)

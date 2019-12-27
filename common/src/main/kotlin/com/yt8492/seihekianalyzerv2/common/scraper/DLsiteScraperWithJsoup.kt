@@ -7,11 +7,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.util.*
 
-object DLsiteScraperWithJsoup {
+object DLsiteScraperWithJsoup : DLsiteScraper {
 
     private val Url_USER_BUY_HISTORY = Url("https://ssl.dlsite.com/maniax/mypage/userbuy")
 
-    suspend fun scrapeAllUserBoughtUrls(loginCookies: Map<String, String>): List<Url> {
+    override suspend fun scrapeAllUserBoughtUrls(loginCookies: Map<String, String>): List<Url> {
         val historyCookies = withContext(Dispatchers.IO) {
             JsoupUtils.requestByPost(Url_USER_BUY_HISTORY, cookies = loginCookies).cookies()
         }
@@ -44,7 +44,7 @@ object DLsiteScraperWithJsoup {
         }
     }
 
-    suspend fun scrapeWorkByUrl(Url: Url): Work {
+    override suspend fun scrapeWorkByUrl(Url: Url): Work {
         val workPage = withContext(Dispatchers.IO) {
             JsoupUtils.requestByGet(Url).parse()
         }
@@ -60,7 +60,7 @@ object DLsiteScraperWithJsoup {
         return Work(Url, tags)
     }
 
-    suspend fun scrapeAllTodayWorks(): List<Work> {
+    override suspend fun scrapeAllTodayWorks(): List<Work> {
         val today = Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo"))
         val todayYMD = today.let { "${it.get(Calendar.YEAR)}-${it.get(Calendar.MONTH) + 1}-${it.get(Calendar.DATE)}" }
         val page = withContext(Dispatchers.IO) {

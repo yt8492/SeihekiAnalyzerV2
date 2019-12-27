@@ -2,11 +2,11 @@ package com.yt8492.seihekianalyzerv2.server.adapter.service
 
 import com.yt8492.seihekianalyzerv2.proto.AnalyzeResult as AnalyzeResultProto
 import com.yt8492.seihekianalyzerv2.proto.SeihekiAnalyzerCoroutineGrpc
-import com.yt8492.seihekianalyzerv2.proto.Tag as TagProto
-import com.yt8492.seihekianalyzerv2.proto.TagCount as TagCountProto
 import com.yt8492.seihekianalyzerv2.common.usecase.analyze.SeihekiAnalyzeResult
 import com.yt8492.seihekianalyzerv2.common.usecase.analyze.SeihekiAnalyzeUseCase
-import com.yt8492.seihekianalyzerv2.common.domain.model.Url
+import com.yt8492.seihekianalyzerv2.proto.Url as UrlProto
+import com.yt8492.seihekianalyzerv2.server.adapter.converter.toDomainModel
+import com.yt8492.seihekianalyzerv2.server.adapter.converter.toProto
 import com.yt8492.seihekianalyzerv2.proto.Urls as UrlsProto
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -21,22 +21,11 @@ class SeihekiAnalyzeService(
     override suspend fun analyze(request: UrlsProto): AnalyzeResultProto {
         println("analyze called")
         println("request size: ${request.urlsCount}")
-        val urls = request.urlsList.map { Url(it.value) }
+        val urls = request.urlsList.map(UrlProto::toDomainModel)
         return when (val result = seihekiAnalyzeUseCase.execute(urls)) {
             is SeihekiAnalyzeResult.Success -> {
                 println("analyze success")
-                AnalyzeResultProto {
-                    totalCount = result.result.totalCount
-                    val tagCounts = result.result.tagCounts.map {
-                        TagCountProto {
-                            tag = TagProto {
-                                value = it.tag.value
-                            }
-                            count = it.count
-                        }
-                    }
-                    addAllTagCounts(tagCounts)
-                }
+                result.result.toProto()
             }
             is SeihekiAnalyzeResult.Failure -> {
                 result.cause.printStackTrace()

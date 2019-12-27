@@ -2,10 +2,12 @@ package com.yt8492.seihekianalyzerv2.ui.analyze
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.yt8492.seihekianalyzerv2.common.scraper.DLsiteScraper
 import com.yt8492.seihekianalyzerv2.common.usecase.analyze.SeihekiAnalyzeUseCase
 import javax.inject.Inject
 
 class AnalyzeViewModelProvider @Inject constructor(
+    private val dlsiteScraper: DLsiteScraper,
     private val seihekiAnalyzeUseCase: SeihekiAnalyzeUseCase
 ) : ViewModelProvider.NewInstanceFactory() {
 
@@ -15,6 +17,7 @@ class AnalyzeViewModelProvider @Inject constructor(
             "Unknown ViewModel Class"
         }
         return AnalyzeViewModel(
+            dlsiteScraper,
             seihekiAnalyzeUseCase
         ) as T
     }

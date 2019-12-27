@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.yt8492.seihekianalyzerv2.common.scraper.DLsiteScraperWithJsoup
+import com.yt8492.seihekianalyzerv2.common.scraper.DLsiteScraper
 import com.yt8492.seihekianalyzerv2.common.usecase.analyze.SeihekiAnalyzeResult
 import com.yt8492.seihekianalyzerv2.common.usecase.analyze.SeihekiAnalyzeUseCase
 import com.yt8492.seihekianalyzerv2.ui.bindingmodel.AnalyzeResultBindingModel
@@ -13,6 +13,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class AnalyzeViewModel(
+    private val dlsiteScraper: DLsiteScraper,
     private val analyzeUseCase: SeihekiAnalyzeUseCase
 ) : ViewModel() {
 
@@ -30,7 +31,7 @@ class AnalyzeViewModel(
 
     fun analyze(loginCookies: Map<String, String>): Job = viewModelScope.launch {
         _loading.value = true
-        val urls = DLsiteScraperWithJsoup.scrapeAllUserBoughtUrls(loginCookies)
+        val urls = dlsiteScraper.scrapeAllUserBoughtUrls(loginCookies)
         when (val analyzeResult = analyzeUseCase.execute(urls)) {
             is SeihekiAnalyzeResult.Success -> {
                 _loading.value = false

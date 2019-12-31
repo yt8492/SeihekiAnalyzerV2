@@ -52,20 +52,25 @@ class WorkRepositoryOnDB(
         }
     }
 
-    private fun transaction(
-        transacter1: Transacter,
-        transacter2: Transacter,
-        transacter3: Transacter,
-        transacter4: Transacter,
-        body: Transacter.Transaction.() -> Unit
-    ) {
-        transacter1.transaction {
-            transacter2.transaction {
-                transacter3.transaction {
-                    transacter4.transaction {
-                        body()
-                    }
+    private fun transaction(vararg transacters: Transacter, body: Transacter.Transaction.() -> Unit) {
+        when {
+            transacters.isEmpty() -> {
+                throw IllegalArgumentException("transacters must not be empty")
+            }
+            transacters.size == 1 -> {
+                transacters.first().transaction {
+                    body()
                 }
+            }
+            else -> {
+                val first = transacters.first()
+                transacters.drop(1)
+                    .let {
+                        val trans = it.toTypedArray()
+                        first.transaction {
+                            transaction(*trans, body = body)
+                        }
+                    }
             }
         }
     }

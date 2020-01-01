@@ -29,8 +29,8 @@ object JsoupUtils {
         return connection.method(Connection.Method.POST).execute()
     }
 
-    fun getConnection(url: Url, sleepTimeMilliSec: Long = 0): Connection {
-        Thread.sleep(sleepTimeMilliSec)
+    fun getConnection(url: Url): Connection {
+        Thread.sleep(1000)
         return Jsoup.connect(url.value).timeout(100000).maxBodySize(0)
     }
 }

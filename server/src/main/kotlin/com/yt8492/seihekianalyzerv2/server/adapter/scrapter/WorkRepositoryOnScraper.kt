@@ -10,13 +10,11 @@ class WorkRepositoryOnScraper(
     private val dlsiteScraper: DLsiteScraper
 ) : WorkRepository {
     override suspend fun findByUrl(url: Url): Work? {
-        delay(1000)
         return dlsiteScraper.scrapeWorkByUrl(url)
     }
 
     override suspend fun findAllByUrls(urls: List<Url>): List<Work> {
         return urls.map {
-            delay(1000)
             dlsiteScraper.scrapeWorkByUrl(it)
         }
     }

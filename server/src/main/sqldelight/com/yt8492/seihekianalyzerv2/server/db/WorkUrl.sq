@@ -1,0 +1,10 @@
+CREATE TABLE work_url (
+  work_id INTEGER NOT NULL,
+  url_id INTEGER NOT NULL,
+  FOREIGN KEY (work_id) REFERENCES work(id),
+  FOREIGN KEY (url_id) REFERENCES url(id),
+  UNIQUE (work_id, url_id)
+);
+
+insert:
+INSERT OR IGNORE INTO work_url (work_id, url_id) VALUES (?, ?);

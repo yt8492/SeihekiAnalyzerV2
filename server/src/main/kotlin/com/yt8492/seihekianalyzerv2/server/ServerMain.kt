@@ -14,15 +14,16 @@ fun main() {
     val driver = JdbcSqliteDriver(JdbcSqliteDriver.IN_MEMORY)
     Database.Schema.create(driver)
     val database = Database(driver)
+    val workDB = database.workQueries
+    val workUrlDB = database.workUrlQueries
     val urlDB = database.urlQueries
     val tagDB = database.tagQueries
     val urlTagDB = database.urlTagQueries
-    val urlWithTagDB = database.urlWithTagQueries
     val accountDB = database.accountQueries
     val accountNotificationTokenDB = database.accountNotificationTokenQueries
     val accountWithNotificationDB = database.accountWithNotificationTokenQueries
 
-    val workRepositoryOnDB = WorkRepositoryOnDB(urlWithTagDB, urlDB, tagDB, urlTagDB)
+    val workRepositoryOnDB = WorkRepositoryOnDB(workDB, workUrlDB, urlDB, tagDB, urlTagDB)
     val workRepositoryOnScraper = WorkRepositoryOnScraper(DLsiteScraperWithJsoup)
 
     val seihekiAnalyzeUseCase = SeihekiAnalyzeUseCaseImpl(workRepositoryOnDB, workRepositoryOnScraper)

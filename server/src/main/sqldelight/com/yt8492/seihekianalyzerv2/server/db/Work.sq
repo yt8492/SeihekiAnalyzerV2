@@ -1,0 +1,20 @@
+CREATE TABLE work (
+  id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL UNIQUE,
+  on_sale INTEGER AS Boolean NOT NULL
+);
+
+insert:
+INSERT OR IGNORE INTO work (name, on_sale) VALUES (?, ?);
+
+selectByName:
+SELECT * FROM work WHERE name = ?;
+
+selectAllByUrlWithUrlAndTag:
+SELECT work.name AS name, work.on_sale AS on_sale, url.value AS url, tag.name AS tag
+FROM work
+INNER JOIN work_url ON work.id = work_url.work_id
+INNER JOIN url ON work_url.url_id = url.id
+INNER JOIN url_tag ON url.id = url_tag.url_id
+INNER JOIN tag ON url_tag.tag_id = tag.id
+WHERE url.value = ?;

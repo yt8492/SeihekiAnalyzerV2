@@ -1,20 +1,18 @@
 package com.yt8492.seihekianalyzerv2.server.usecase.impl
 
+import com.yt8492.seihekianalyzerv2.common.domain.model.*
 import com.yt8492.seihekianalyzerv2.server.domain.repository.WorkRepository
 import com.yt8492.seihekianalyzerv2.common.usecase.analyze.SeihekiAnalyzeResult
 import com.yt8492.seihekianalyzerv2.common.usecase.analyze.SeihekiAnalyzeUseCase
-import com.yt8492.seihekianalyzerv2.common.domain.model.AnalyzeResult
-import com.yt8492.seihekianalyzerv2.common.domain.model.Tag
-import com.yt8492.seihekianalyzerv2.common.domain.model.TagCount
-import com.yt8492.seihekianalyzerv2.common.domain.model.Url
 import java.lang.Exception
 
 class SeihekiAnalyzeUseCaseImpl(
     private val workRepositoryOnDB: WorkRepository,
     private val workRepositoryOnScraper: WorkRepository
 ) : SeihekiAnalyzeUseCase {
-    override suspend fun execute(urls: List<Url>): SeihekiAnalyzeResult {
+    override suspend fun execute(workNameAndUrls: List<WorkNameAndUrl>): SeihekiAnalyzeResult {
         try {
+            val urls = workNameAndUrls.mapNotNull { it.url }
             val worksFromDB = workRepositoryOnDB.findAllByUrls(urls)
             val scrapeRequireUrls = urls.filterNot { url ->
                 worksFromDB.any {
@@ -37,7 +35,7 @@ class SeihekiAnalyzeUseCaseImpl(
             }.sortedByDescending{
                 it.count
             }
-            val analyzeResult = AnalyzeResult(works.size, tagCounts)
+            val analyzeResult = AnalyzeResult(workNameAndUrls.size, works.size, tagCounts)
             return SeihekiAnalyzeResult.Success(analyzeResult)
         } catch (e: Exception) {
             return SeihekiAnalyzeResult.Failure(e)

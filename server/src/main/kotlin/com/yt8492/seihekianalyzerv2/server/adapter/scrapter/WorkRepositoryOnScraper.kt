@@ -4,16 +4,15 @@ import com.yt8492.seihekianalyzerv2.server.domain.repository.WorkRepository
 import com.yt8492.seihekianalyzerv2.common.domain.model.Url
 import com.yt8492.seihekianalyzerv2.common.domain.model.Work
 import com.yt8492.seihekianalyzerv2.common.scraper.DLsiteScraper
-import kotlinx.coroutines.delay
 
 class WorkRepositoryOnScraper(
     private val dlsiteScraper: DLsiteScraper
 ) : WorkRepository {
-    override suspend fun findByUrl(url: Url): Work? {
+    override suspend fun findByUrl(url: Url): Work.OnSale? {
         return dlsiteScraper.scrapeWorkByUrl(url)
     }
 
-    override suspend fun findAllByUrls(urls: List<Url>): List<Work> {
+    override suspend fun findAllByUrls(urls: List<Url>): List<Work.OnSale> {
         return urls.map {
             dlsiteScraper.scrapeWorkByUrl(it)
         }

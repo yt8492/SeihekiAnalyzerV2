@@ -31,8 +31,8 @@ class AnalyzeViewModel(
 
     fun analyze(loginCookies: Map<String, String>): Job = viewModelScope.launch {
         _loading.value = true
-        val urls = dlsiteScraper.scrapeAllUserBoughtUrls(loginCookies)
-        when (val analyzeResult = analyzeUseCase.execute(urls)) {
+        val workNameAndUrls = dlsiteScraper.scrapeAllUserBoughtWorkNameAndUrl(loginCookies)
+        when (val analyzeResult = analyzeUseCase.execute(workNameAndUrls)) {
             is SeihekiAnalyzeResult.Success -> {
                 _loading.value = false
                 _analyzeResult.value = analyzeResult.result.toBindingModel()

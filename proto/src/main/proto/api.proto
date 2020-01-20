@@ -13,6 +13,7 @@ message Tag {
 
 message Url {
     string value = 1;
+    bool is_exists = 2;
 }
 
 message Urls {
@@ -24,6 +25,25 @@ message Work {
     repeated Tag tags = 2;
 }
 
+message WorkOnSale {
+    string name = 1;
+    Url url = 2;
+    repeated Tag tags = 3;
+}
+
+message WorkDiscontinued {
+    string name = 1;
+}
+
+message WorkNameAndUrl {
+    string name = 1;
+    Url url = 2;
+}
+
+message WorkNameAndUrls {
+    repeated WorkNameAndUrl work_name_and_urls = 1;
+}
+
 message TagCount {
     Tag tag = 1;
     int32 count = 2;
@@ -31,7 +51,8 @@ message TagCount {
 
 message AnalyzeResult {
     int32 total_count = 1;
-    repeated TagCount tag_counts = 2;
+    int32 success_count = 2;
+    repeated TagCount tag_counts = 3;
 }
 
 message User {
@@ -48,7 +69,7 @@ message UserNotificationToken {
 }
 
 service SeihekiAnalyzer {
-    rpc Analyze(Urls) returns (AnalyzeResult);
+    rpc Analyze(WorkNameAndUrls) returns (AnalyzeResult);
 }
 
 service RecommendService {

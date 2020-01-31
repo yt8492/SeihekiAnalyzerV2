@@ -12,39 +12,6 @@ object DLsiteScraperWithJsoup : DLsiteScraper {
 
     private val URL_USER_BUY_HISTORY = Url("https://ssl.dlsite.com/maniax/mypage/userbuy")
 
-    override suspend fun scrapeAllUserBoughtUrls(loginCookies: Map<String, String>): List<Url> {
-        val historyCookies = withContext(Dispatchers.IO) {
-            JsoupUtils.requestByPost(URL_USER_BUY_HISTORY, cookies = loginCookies).cookies()
-        }
-
-        val thisMonthUserBuyHistoryResult = withContext(Dispatchers.IO) {
-            JsoupUtils.requestByGet(URL_USER_BUY_HISTORY, cookies = historyCookies).parse()
-        }
-        val pastMonthUserBuyHistoryResult = withContext(Dispatchers.IO) {
-            JsoupUtils.requestByGet(URL_USER_BUY_HISTORY, cookies = historyCookies, data = mapOf(
-                "_layout" to "mypage_userbuy_complete",
-                "_form_id" to "mypageUserbuyCompleteForm",
-                "_site" to "maniax",
-                "_view" to "input",
-                "start" to "all"
-            )).parse()
-        }
-        val userBuyHistoryUrls = listOf(thisMonthUserBuyHistoryResult, pastMonthUserBuyHistoryResult)
-            .flatMap { d ->
-                d.getElementsByClass("work_name")
-                    .map { e ->
-                        try {
-                            e.select("[href]").toString().split("\"")[1]
-                        } catch (error: IndexOutOfBoundsException) {
-                            ""
-                        }
-                    }
-            }
-        return userBuyHistoryUrls.map {
-            Url(it)
-        }
-    }
-
     override suspend fun scrapeAllUserBoughtWorkNameAndUrl(loginCookies: Map<String, String>): List<WorkNameAndUrl> {
         val historyCookies = withContext(Dispatchers.IO) {
             JsoupUtils.requestByPost(URL_USER_BUY_HISTORY, cookies = loginCookies).cookies()

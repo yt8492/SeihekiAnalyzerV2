@@ -40,7 +40,7 @@ object Dependencies {
     }
 
     object KrotoPlus {
-        const val version = "0.5.0"
+        const val version = "0.6.1"
         const val coroutines = "com.github.marcoferrer.krotoplus:kroto-plus-coroutines:$version"
         const val message = "com.github.marcoferrer.krotoplus:kroto-plus-message:$version"
     }

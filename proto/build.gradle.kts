@@ -50,10 +50,10 @@ protobuf {
             artifact = "io.grpc:protoc-gen-grpc-java:${Dependencies.Grpc.version}"
         }
         id("coroutines") {
-            artifact = "com.github.marcoferrer.krotoplus:protoc-gen-grpc-coroutines:${Dependencies.KrotoPlus.version}:jvm8@jar"
+            artifact = "com.github.marcoferrer.krotoplus:protoc-gen-grpc-coroutines:${Dependencies.KrotoPlus.version}"
         }
         id("kroto") {
-            artifact = "com.github.marcoferrer.krotoplus:protoc-gen-kroto-plus:v${Dependencies.KrotoPlus.version}:jvm8@jar"
+            artifact = "com.github.marcoferrer.krotoplus:protoc-gen-kroto-plus:${Dependencies.KrotoPlus.version}"
         }
     }
 

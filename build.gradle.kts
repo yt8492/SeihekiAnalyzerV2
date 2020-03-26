@@ -43,3 +43,5 @@ subprojects {
 tasks.register<Delete>("clean") {
     delete(rootProject.buildDir)
 }
+
+tasks.register<MergeKtlintReportsTask>("mergeKtlintReports")

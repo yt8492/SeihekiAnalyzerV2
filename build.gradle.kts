@@ -1,8 +1,11 @@
+import org.jlleitschuh.gradle.ktlint.KtlintExtension
+import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
+
 buildscript {
     repositories {
         google()
         jcenter()
-        
+        maven("https://plugins.gradle.org/m2/")
     }
     dependencies {
         classpath("com.android.tools.build:gradle:3.6.1")
@@ -15,11 +18,25 @@ buildscript {
     }
 }
 
+plugins {
+    id("org.jlleitschuh.gradle.ktlint") version "9.2.1" apply false
+}
+
 allprojects {
     repositories {
         google()
         jcenter()
-        
+    }
+}
+
+subprojects {
+    apply(plugin = "org.jlleitschuh.gradle.ktlint")
+
+    extensions.configure<KtlintExtension>("ktlint") {
+        ignoreFailures.set(true)
+        reporters {
+            reporter(ReporterType.CHECKSTYLE)
+        }
     }
 }
 

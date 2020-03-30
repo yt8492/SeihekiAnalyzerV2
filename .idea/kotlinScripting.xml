@@ -2,5 +2,23 @@
 <project version="4">
   <component name="KotlinScriptingSettings">
     <option name="suppressDefinitionsCheck" value="true" />
+    <scriptDefinition className="org.jetbrains.kotlin.idea.scripting.gradle.GradleKotlinScriptDefinitionFromAnnotatedTemplate" definitionName="KotlinInitScript">
+      <order>1</order>
+    </scriptDefinition>
+    <scriptDefinition className="org.jetbrains.kotlin.idea.scripting.gradle.GradleKotlinScriptDefinitionFromAnnotatedTemplate" definitionName="KotlinSettingsScript">
+      <order>2</order>
+    </scriptDefinition>
+    <scriptDefinition className="org.jetbrains.kotlin.idea.scripting.gradle.GradleKotlinScriptDefinitionFromAnnotatedTemplate" definitionName="KotlinBuildScript">
+      <order>3</order>
+    </scriptDefinition>
+    <scriptDefinition className="org.jetbrains.kotlin.mainKts.MainKtsScript" definitionName="MainKtsScript">
+      <order>4</order>
+    </scriptDefinition>
+    <scriptDefinition className="org.jetbrains.kotlin.idea.core.script.StandardIdeScriptDefinition" definitionName="Kotlin Script">
+      <order>5</order>
+    </scriptDefinition>
+    <scriptDefinition className="systems.danger.kts.DangerFileScript" definitionName="DangerFileScript">
+      <order>0</order>
+    </scriptDefinition>
   </component>
 </project>

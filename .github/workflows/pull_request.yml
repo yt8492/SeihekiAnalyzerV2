@@ -3,7 +3,7 @@ name: pull request workflow
 on: [pull_request]
 
 jobs:
-  lint:
+  build:
 
     runs-on: ubuntu-latest
 
@@ -22,8 +22,8 @@ jobs:
         run: |
           gem install bundler
           bundle install
-      - name: Lint with Gradle
-        run: ./gradlew ktlintCheck mergeKtlintReports
+      - name: Build with Gradle
+        run: ./gradlew build mergeKtlintReports
       - name: run danger
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

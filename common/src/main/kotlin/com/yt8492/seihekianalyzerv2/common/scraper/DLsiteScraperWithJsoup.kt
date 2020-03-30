@@ -10,7 +10,7 @@ import java.util.*
 
 object DLsiteScraperWithJsoup : DLsiteScraper {
 
-    private val URL_USER_BUY_HISTORY = Url("https://ssl.dlsite.com/maniax/mypage/userbuy")
+     private val URL_USER_BUY_HISTORY = Url("https://ssl.dlsite.com/maniax/mypage/userbuy")
 
     override suspend fun scrapeAllUserBoughtWorkNameAndUrl(loginCookies: Map<String, String>): List<WorkNameAndUrl> {
         val historyCookies = withContext(Dispatchers.IO) {

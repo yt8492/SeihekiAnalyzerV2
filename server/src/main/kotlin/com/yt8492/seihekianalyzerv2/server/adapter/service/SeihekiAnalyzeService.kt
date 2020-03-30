@@ -15,7 +15,7 @@ import kotlin.coroutines.CoroutineContext
 class SeihekiAnalyzeService(
     private val seihekiAnalyzeUseCase: SeihekiAnalyzeUseCase
 ) : SeihekiAnalyzerCoroutineGrpc.SeihekiAnalyzerImplBase() {
-    override val initialContext: CoroutineContext
+     override val initialContext: CoroutineContext
         get() = Dispatchers.Default + Job()
 
     override suspend fun analyze(request: WorkNameAndUrls): AnalyzeResultProto {

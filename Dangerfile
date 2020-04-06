@@ -12,19 +12,7 @@ Dir.glob("**/lint-results.xml").each { |report|
 }
 
 # ktlint
-
-require 'rexml/document'
-Dir.glob("**/ktlint/*.xml").each { |report_file_path|
-  report_file = File.new(report_file_path)
-  module_path = report_file_path.slice(/(.*)\/build/, 1)
-  doc = REXML::Document.new(report_file)
-  doc.elements.each("/checkstyle/file") { |element|
-    element.attributes["name"] = module_path + "/" + element.attributes["name"]
-  }
-  File.write(report_file_path.sub(".xml", "_path_changed.xml"), doc)
-}
-
 checkstyle_format.base_path = Dir.pwd
-Dir.glob("**/ktlint/*_path_changed.xml").each { |report|
+Dir.glob("**/ktlint/*.xml").each { |report|
   checkstyle_format.report report.to_s
 }

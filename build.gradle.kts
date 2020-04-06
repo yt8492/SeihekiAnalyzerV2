@@ -34,8 +34,12 @@ subprojects {
 
     extensions.configure<KtlintExtension>("ktlint") {
         ignoreFailures.set(true)
+        disabledRules.set(setOf("no-wildcard-imports"))
         reporters {
             reporter(ReporterType.CHECKSTYLE)
+        }
+        filter {
+            exclude("**/generated/**")
         }
     }
 }

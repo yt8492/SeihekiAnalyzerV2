@@ -1,11 +1,11 @@
 package com.yt8492.seihekianalyzerv2.server
 
 import com.squareup.sqldelight.sqlite.driver.JdbcSqliteDriver
+import com.yt8492.seihekianalyzerv2.common.scraper.DLsiteScraperWithJsoup
 import com.yt8492.seihekianalyzerv2.server.adapter.db.WorkRepositoryOnDB
 import com.yt8492.seihekianalyzerv2.server.adapter.scrapter.WorkRepositoryOnScraper
 import com.yt8492.seihekianalyzerv2.server.adapter.service.SeihekiAnalyzeService
 import com.yt8492.seihekianalyzerv2.server.usecase.impl.SeihekiAnalyzeUseCaseImpl
-import com.yt8492.seihekianalyzerv2.common.scraper.DLsiteScraperWithJsoup
 import io.grpc.ServerBuilder
 
 fun main() {

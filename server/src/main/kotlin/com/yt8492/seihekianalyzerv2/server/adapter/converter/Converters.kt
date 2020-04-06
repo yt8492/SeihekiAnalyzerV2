@@ -1,12 +1,12 @@
 package com.yt8492.seihekianalyzerv2.server.adapter.converter
 
 import com.yt8492.seihekianalyzerv2.common.domain.model.*
-import com.yt8492.seihekianalyzerv2.proto.Urls
-import com.yt8492.seihekianalyzerv2.proto.WorkNameAndUrl as WorkNameAndUrlProto
-import com.yt8492.seihekianalyzerv2.proto.TagCount as TagCountProto
 import com.yt8492.seihekianalyzerv2.proto.AnalyzeResult as AnalyzeResultProto
 import com.yt8492.seihekianalyzerv2.proto.Tag as TagProto
+import com.yt8492.seihekianalyzerv2.proto.TagCount as TagCountProto
 import com.yt8492.seihekianalyzerv2.proto.Url as UrlProto
+import com.yt8492.seihekianalyzerv2.proto.Urls
+import com.yt8492.seihekianalyzerv2.proto.WorkNameAndUrl as WorkNameAndUrlProto
 
 fun UrlProto.toDomainModel(): Url? = if (this.isExists) {
     Url(this.value)

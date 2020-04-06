@@ -18,7 +18,6 @@ import com.yt8492.seihekianalyzerv2.ui.bindingmodel.AnalyzeResultBindingModel
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
-
 class AnalyzeResultFragment : Fragment() {
 
     @Inject
@@ -43,7 +42,10 @@ class AnalyzeResultFragment : Fragment() {
         val recyclerAdapter = TagCountRecyclerAdapter()
         binding.tagCountsRecyclerView.apply {
             val linearLayoutManager = LinearLayoutManager(inflater.context)
-            val dividerItemDecoration = DividerItemDecoration(inflater.context, linearLayoutManager.orientation)
+            val dividerItemDecoration = DividerItemDecoration(
+                inflater.context,
+                linearLayoutManager.orientation
+            )
             addItemDecoration(dividerItemDecoration)
             adapter = recyclerAdapter
         }

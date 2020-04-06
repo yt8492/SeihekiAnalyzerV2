@@ -4,9 +4,9 @@ import com.yt8492.seihekianalyzerv2.common.domain.model.Tag
 import com.yt8492.seihekianalyzerv2.common.domain.model.Url
 import com.yt8492.seihekianalyzerv2.common.domain.model.Work
 import com.yt8492.seihekianalyzerv2.common.domain.model.WorkNameAndUrl
+import java.util.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.util.*
 
 object DLsiteScraperWithJsoup : DLsiteScraper {
 
@@ -53,7 +53,7 @@ object DLsiteScraperWithJsoup : DLsiteScraper {
             .getElementsByTag("a")
             .text()
         val rows = workPage.getElementById("work_outline").select("tr")
-        val tags =  rows.find { row ->
+        val tags = rows.find { row ->
             row.child(0).text() == "ジャンル"
         }?.getElementsByClass("main_genre")
             ?.select("[href]")

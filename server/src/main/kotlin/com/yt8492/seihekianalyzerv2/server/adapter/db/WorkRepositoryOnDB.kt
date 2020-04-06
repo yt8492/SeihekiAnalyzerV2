@@ -1,11 +1,11 @@
 package com.yt8492.seihekianalyzerv2.server.adapter.db
 
 import com.squareup.sqldelight.Transacter
-import com.yt8492.seihekianalyzerv2.server.domain.repository.WorkRepository
 import com.yt8492.seihekianalyzerv2.common.domain.model.Tag
 import com.yt8492.seihekianalyzerv2.common.domain.model.Url
 import com.yt8492.seihekianalyzerv2.common.domain.model.Work
 import com.yt8492.seihekianalyzerv2.server.db.*
+import com.yt8492.seihekianalyzerv2.server.domain.repository.WorkRepository
 
 class WorkRepositoryOnDB(
     private val workDB: WorkQueries,

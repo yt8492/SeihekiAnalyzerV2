@@ -1,7 +1,6 @@
 package com.yt8492.seihekianalyzerv2.ui
 
 import com.yt8492.seihekianalyzerv2.common.domain.model.AnalyzeResult
-import com.yt8492.seihekianalyzerv2.common.domain.model.TagCount
 import com.yt8492.seihekianalyzerv2.ui.bindingmodel.AnalyzeResultBindingModel
 import com.yt8492.seihekianalyzerv2.ui.bindingmodel.TagCountBindingModel
 

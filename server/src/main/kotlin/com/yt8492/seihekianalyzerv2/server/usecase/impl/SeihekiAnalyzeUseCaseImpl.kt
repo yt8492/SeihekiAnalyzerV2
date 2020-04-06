@@ -1,9 +1,9 @@
 package com.yt8492.seihekianalyzerv2.server.usecase.impl
 
 import com.yt8492.seihekianalyzerv2.common.domain.model.*
-import com.yt8492.seihekianalyzerv2.server.domain.repository.WorkRepository
 import com.yt8492.seihekianalyzerv2.common.usecase.analyze.SeihekiAnalyzeResult
 import com.yt8492.seihekianalyzerv2.common.usecase.analyze.SeihekiAnalyzeUseCase
+import com.yt8492.seihekianalyzerv2.server.domain.repository.WorkRepository
 import java.lang.Exception
 
 class SeihekiAnalyzeUseCaseImpl(
@@ -32,7 +32,7 @@ class SeihekiAnalyzeUseCaseImpl(
                 tagCounts
             }.map {
                 TagCount(it.key, it.value)
-            }.sortedByDescending{
+            }.sortedByDescending {
                 it.count
             }
             val analyzeResult = AnalyzeResult(workNameAndUrls.size, works.size, tagCounts)

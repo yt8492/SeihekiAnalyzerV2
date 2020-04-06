@@ -35,6 +35,5 @@ class TagCountRecyclerAdapter : ListAdapter<TagCountBindingModel, TagCountViewHo
                 return oldItem == newItem
             }
         }
-
     }
 }

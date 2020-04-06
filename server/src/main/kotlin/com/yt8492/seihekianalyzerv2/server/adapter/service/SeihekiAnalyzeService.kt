@@ -1,16 +1,16 @@
 package com.yt8492.seihekianalyzerv2.server.adapter.service
 
-import com.yt8492.seihekianalyzerv2.proto.AnalyzeResult as AnalyzeResultProto
-import com.yt8492.seihekianalyzerv2.proto.SeihekiAnalyzerCoroutineGrpc
 import com.yt8492.seihekianalyzerv2.common.usecase.analyze.SeihekiAnalyzeResult
 import com.yt8492.seihekianalyzerv2.common.usecase.analyze.SeihekiAnalyzeUseCase
+import com.yt8492.seihekianalyzerv2.proto.AnalyzeResult as AnalyzeResultProto
+import com.yt8492.seihekianalyzerv2.proto.SeihekiAnalyzerCoroutineGrpc
 import com.yt8492.seihekianalyzerv2.proto.WorkNameAndUrl as WorkNameAndUrlProto
 import com.yt8492.seihekianalyzerv2.proto.WorkNameAndUrls
 import com.yt8492.seihekianalyzerv2.server.adapter.converter.toDomainModel
 import com.yt8492.seihekianalyzerv2.server.adapter.converter.toProto
+import kotlin.coroutines.CoroutineContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import kotlin.coroutines.CoroutineContext
 
 class SeihekiAnalyzeService(
     private val seihekiAnalyzeUseCase: SeihekiAnalyzeUseCase

@@ -1,9 +1,7 @@
 package com.yt8492.seihekianalyzerv2.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.commitNow
-import com.yt8492.seihekianalyzerv2.ui.analyze.LoginFragment
+import androidx.appcompat.app.AppCompatActivity
 import com.yt8492.seihekianalyzerv2.R
 
 class MainActivity : AppCompatActivity() {

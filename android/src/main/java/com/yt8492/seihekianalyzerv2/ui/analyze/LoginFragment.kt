@@ -8,13 +8,10 @@ import android.view.ViewGroup
 import android.webkit.CookieManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.yt8492.seihekianalyzerv2.R
 import com.yt8492.seihekianalyzerv2.databinding.FragmentLoginBinding
-import com.yt8492.seihekianalyzerv2.common.scraper.DLsiteScraperWithJsoup
 import dagger.android.support.AndroidSupportInjection
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class LoginFragment : Fragment() {

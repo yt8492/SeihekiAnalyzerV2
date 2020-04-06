@@ -23,8 +23,8 @@ jobs:
           gem install bundler
           bundle install
       - name: Build with Gradle
-        run: ./gradlew build mergeKtlintReports
-      - name: run danger
+        run: ./gradlew build
+      - name: Run Danger
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: danger
+        run: bundle exec danger

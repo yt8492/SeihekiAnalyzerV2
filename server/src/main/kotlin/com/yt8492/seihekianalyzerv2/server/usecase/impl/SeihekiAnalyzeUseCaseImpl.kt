@@ -1,6 +1,9 @@
 package com.yt8492.seihekianalyzerv2.server.usecase.impl
 
-import com.yt8492.seihekianalyzerv2.common.domain.model.*
+import com.yt8492.seihekianalyzerv2.common.domain.model.AnalyzeResult
+import com.yt8492.seihekianalyzerv2.common.domain.model.Tag
+import com.yt8492.seihekianalyzerv2.common.domain.model.TagCount
+import com.yt8492.seihekianalyzerv2.common.domain.model.WorkNameAndUrl
 import com.yt8492.seihekianalyzerv2.common.usecase.analyze.SeihekiAnalyzeResult
 import com.yt8492.seihekianalyzerv2.common.usecase.analyze.SeihekiAnalyzeUseCase
 import com.yt8492.seihekianalyzerv2.server.domain.repository.WorkRepository

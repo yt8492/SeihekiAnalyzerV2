@@ -1,6 +1,10 @@
 package com.yt8492.seihekianalyzerv2.infra.converter
 
-import com.yt8492.seihekianalyzerv2.common.domain.model.*
+import com.yt8492.seihekianalyzerv2.common.domain.model.AnalyzeResult
+import com.yt8492.seihekianalyzerv2.common.domain.model.Tag
+import com.yt8492.seihekianalyzerv2.common.domain.model.TagCount
+import com.yt8492.seihekianalyzerv2.common.domain.model.Url
+import com.yt8492.seihekianalyzerv2.common.domain.model.WorkNameAndUrl
 import com.yt8492.seihekianalyzerv2.proto.AnalyzeResult as AnalyzeResultProto
 import com.yt8492.seihekianalyzerv2.proto.Tag as TagProto
 import com.yt8492.seihekianalyzerv2.proto.TagCount as TagCountProto

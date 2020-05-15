@@ -20,11 +20,6 @@ message Urls {
     repeated Url urls = 1;
 }
 
-message Work {
-    Url url = 1;
-    repeated Tag tags = 2;
-}
-
 message WorkOnSale {
     string name = 1;
     Url url = 2;

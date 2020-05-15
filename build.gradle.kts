@@ -8,11 +8,11 @@ buildscript {
         maven("https://plugins.gradle.org/m2/")
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:3.6.3")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${Dependencies.Kotlin.version}")
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.2.2")
-        classpath("com.google.protobuf:protobuf-gradle-plugin:0.8.10")
-        classpath("com.squareup.sqldelight:gradle-plugin:1.2.1")
+        classpath(Dependencies.Android.gradlePlugin)
+        classpath(Dependencies.Kotlin.gradlePlugin)
+        classpath(Dependencies.AndroidX.Navigation.safeArgsGradlePlugin)
+        classpath(Dependencies.Protobuf.gradlePlugin)
+        classpath(Dependencies.SqlDelight.gradlePlugin)
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
